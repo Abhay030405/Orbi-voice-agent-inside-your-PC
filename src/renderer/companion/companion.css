@@ -1,0 +1,62 @@
+/* The companion window: 260 × 176, transparent. The face (112 px) sits at the bottom centre; the hover
+   tooltip floats above it. Sizes must match main/companion.ts. */
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+  user-select: none;
+}
+
+.face {
+  position: absolute;
+  left: 74px; /* (260 - 112) / 2 */
+  bottom: 8px;
+  width: 112px;
+  height: 112px;
+}
+body.over .face {
+  cursor: pointer;
+}
+body.dragging .face {
+  cursor: grabbing;
+}
+
+/* Hover tooltip (design: Geist 400 11px, surface bg, line2 border, radius 6, padding 5 × 9). */
+.tip {
+  position: absolute;
+  left: 50%;
+  bottom: 126px;
+  transform: translateX(-50%);
+  max-width: 240px;
+  padding: 5px 9px;
+  border-radius: 6px;
+  font: 400 11px/1.35 'Geist Variable', system-ui, sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+.tip[hidden] {
+  display: none;
+}
+.tip[data-theme='graphite'] {
+  color: #e6e8eb;
+  background: #14171b;
+  border: 1px solid #2a3038;
+}
+.tip[data-theme='ember'] {
+  color: #efeae2;
+  background: #1c1915;
+  border: 1px solid #3a332b;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}

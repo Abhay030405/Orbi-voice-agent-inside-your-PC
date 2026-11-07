@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' data:"
+    />
+    <title>Dreamwalker companion</title>
+  </head>
+  <body>
+    <!-- The face is drawn on the canvas. Click: open Dreamwalker. Drag: move it. Right-click: menu.
+         The rest of this window is transparent and lets clicks through (main/companion.ts). -->
+    <div class="tip" role="tooltip" hidden></div>
+    <canvas class="face" aria-hidden="true"></canvas>
+    <!-- The state in words, for screen readers (the face itself has no text). -->
+    <div class="sr-only" aria-live="polite"></div>
+    <script type="module" src="./companion/companion.ts"></script>
+  </body>
+</html>

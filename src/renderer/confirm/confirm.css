@@ -1,0 +1,223 @@
+/* The confirmation window: 460 px wide, height fits the content (main/gatekeeper/confirmWindow.ts).
+   Colours: theme tokens. Amber (--att) = needs you; red (--err) only when it can't be undone. */
+
+html,
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--tx);
+  font-family: var(--sans);
+  overflow: hidden;
+  user-select: none;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px 20px 20px;
+  border: 1px solid var(--attLine);
+  background: linear-gradient(180deg, var(--attWash), transparent 120px), var(--bg);
+  animation: enter 220ms cubic-bezier(0.2, 0.9, 0.3, 1.15);
+  -webkit-app-region: drag; /* move it by any empty part */
+}
+body.danger .card {
+  border-color: color-mix(in srgb, var(--err) 55%, transparent);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--err) 7%, transparent), transparent 120px), var(--bg);
+}
+body.leaving .card {
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 120ms, transform 120ms;
+}
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.face {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+}
+.head-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  flex: 1;
+}
+h1 {
+  margin: 0;
+  font-weight: 500;
+  font-size: 15.5px;
+  letter-spacing: -0.01em;
+}
+.tool {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--tx3);
+}
+.chip {
+  padding: 3px 8px;
+  border: 1px solid var(--attLine);
+  border-radius: 999px;
+  color: var(--att);
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+body.danger .chip {
+  border-color: color-mix(in srgb, var(--err) 55%, transparent);
+  color: var(--err);
+}
+
+.action {
+  padding: 12px 14px;
+  border: 1px solid var(--line2);
+  border-radius: 10px;
+  background: var(--surf);
+  font-size: 14.5px;
+  line-height: 1.45;
+  user-select: text;
+  -webkit-app-region: no-drag;
+  overflow-wrap: anywhere;
+}
+.action-detail {
+  margin: 8px 0 0;
+  padding: 8px 10px;
+  max-height: 160px;
+  overflow: auto;
+  border-radius: 6px;
+  background: var(--sunk);
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+.action-detail[hidden],
+.tool[hidden],
+.chip[hidden],
+.fact[hidden] {
+  display: none;
+}
+
+.facts {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--tx2);
+}
+.fact-note {
+  color: var(--tx3);
+}
+
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 2px;
+}
+.voice {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--tx3);
+}
+.buttons {
+  display: flex;
+  gap: 8px;
+  -webkit-app-region: no-drag;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font: 500 13px var(--sans);
+  cursor: pointer;
+  transition: background 120ms, border-color 120ms, transform 80ms;
+}
+.btn:active {
+  transform: scale(0.97);
+}
+.btn:focus-visible {
+  outline: 2px solid var(--acc);
+  outline-offset: 2px;
+}
+.btn-deny {
+  border: 1px solid var(--line3);
+  background: var(--surf);
+  color: var(--tx);
+}
+.btn-deny:hover {
+  background: var(--surf2);
+}
+.btn-deny kbd {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--tx3);
+}
+.btn-allow {
+  border: 1px solid var(--att);
+  background: var(--att);
+  color: var(--bg);
+}
+.btn-allow:hover {
+  filter: brightness(1.08);
+}
+body.danger .btn-allow {
+  border-color: var(--err);
+  background: transparent;
+  color: var(--err);
+}
+body.danger .btn-allow:hover {
+  background: color-mix(in srgb, var(--err) 12%, transparent);
+}
+
+.timer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--line);
+}
+.timer-bar {
+  height: 100%;
+  background: var(--att);
+  transform-origin: left;
+}
+body.danger .timer-bar {
+  background: var(--err);
+}
+@keyframes countdown {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    animation: none;
+  }
+}

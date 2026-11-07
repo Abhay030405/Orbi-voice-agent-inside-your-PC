@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    />
+    <title>Dreamwalker glow</title>
+  </head>
+  <body>
+    <!-- Full-screen, transparent, click-through. Only the edges ever light up, drawn on one canvas
+         (overlay.ts). -->
+    <div class="glow" data-state="idle"><canvas></canvas></div>
+    <script type="module" src="./overlay/overlay.ts"></script>
+  </body>
+</html>

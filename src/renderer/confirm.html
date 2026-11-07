@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' data:"
+    />
+    <title>Dreamwalker needs your OK</title>
+  </head>
+  <body>
+    <!-- One question, two answers. Everything is filled in by confirm/confirm.ts with textContent only:
+         the action can contain outside text (a page title, a button name), never HTML. -->
+    <main class="card" role="alertdialog" aria-labelledby="title" aria-describedby="action">
+      <header class="head">
+        <canvas class="face" aria-hidden="true"></canvas>
+        <div class="head-text">
+          <h1 id="title"></h1>
+          <code class="tool" hidden></code>
+        </div>
+        <span class="chip" hidden></span>
+      </header>
+
+      <section id="action" class="action">
+        <div class="action-line"></div>
+        <pre class="action-detail" hidden></pre>
+      </section>
+
+      <ul class="facts">
+        <li class="fact fact-undo"></li>
+        <li class="fact fact-why"></li>
+        <li class="fact fact-note" hidden></li>
+      </ul>
+
+      <footer class="foot">
+        <span class="voice">
+          <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true">
+            <path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3Zm-6 9a6 6 0 0 0 12 0M12 18v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          </svg>
+          or say “yes, go ahead” / “no, cancel”
+        </span>
+        <div class="buttons">
+          <button class="btn btn-deny" type="button">Deny <kbd>Esc</kbd></button>
+          <button class="btn btn-allow" type="button">Allow</button>
+        </div>
+      </footer>
+      <div class="timer" aria-hidden="true"><div class="timer-bar"></div></div>
+    </main>
+    <script type="module" src="./confirm/confirm.ts"></script>
+  </body>
+</html>
