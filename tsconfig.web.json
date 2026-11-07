@@ -1,0 +1,19 @@
+{
+  // The browser world: renderer. Knows `window` and the DOM. Does NOT know Node:
+  // `types` lists only vite/client, so writing `require('fs')` here is a compile error.
+  "compilerOptions": {
+    "composite": true,
+    "target": "ES2023",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "types": ["vite/client"],
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": true,
+    "outDir": "node_modules/.tmp/tsc-web"
+  },
+  "include": ["src/renderer/**/*", "src/shared/**/*"]
+}

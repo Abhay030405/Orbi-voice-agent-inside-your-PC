@@ -1,0 +1,2 @@
+# The relay VM runs this with bash: Windows line endings would break it.
+*.sh text eol=lf

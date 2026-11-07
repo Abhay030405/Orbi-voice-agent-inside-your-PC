@@ -1,0 +1,41 @@
+{
+  "name": "dreamwalker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Desktop voice agent that controls your computer and Android phone, and stays correct when things break.",
+  "main": "./out/main/index.js",
+  "scripts": {
+    "models": "node scripts/fetch-models.mjs",
+    "tools": "node scripts/fetch-tools.mjs",
+    "dev": "electron-vite dev",
+    "dev:watch": "electron-vite dev --watch",
+    "build": "electron-vite build",
+    "start": "electron-vite preview",
+    "test": "node --test --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON src/main/brain/brain.test.ts src/main/wake/bargein.test.ts src/main/wake/tokenizer.test.ts src/main/link/outbox.test.ts src/main/hands/process.test.ts src/main/ledger/ledger.test.ts src/main/gatekeeper/gatekeeper.test.ts src/main/ledger/idempotency.test.ts src/main/tasks/tasks.test.ts src/main/presence.test.ts src/main/session.test.ts src/main/wake/gate.test.ts src/main/memory.test.ts src/main/hands/keymap.test.ts src/main/phone/parse.test.ts src/main/hands/pcmap.test.ts src/main/honesty.test.ts src/main/google/parse.test.ts src/main/remote.test.ts src/main/hands/fuzzy.test.ts src/main/hands/routines.test.ts src/main/secrets.test.ts src/main/agent/watch.test.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.node.json --composite false && tsc --noEmit -p tsconfig.web.json --composite false"
+  },
+  "dependencies": {
+    "@fontsource-variable/geist": "5.3.0",
+    "@fontsource-variable/geist-mono": "5.3.0",
+    "@google/genai": "2.30.0",
+    "docx": "^9.13.0",
+    "fuzzball": "2.2.6",
+    "pptxgenjs": "^4.0.1",
+    "qrcode-generator": "2.0.4",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "sherpa-onnx-node": "1.13.8",
+    "thinking-orbs": "0.3.2",
+    "voice-glow": "0.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "electron": "^44.9.0",
+    "electron-vite": "^5.0.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.7"
+  }
+}

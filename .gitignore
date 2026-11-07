@@ -1,0 +1,16 @@
+node_modules/
+out/
+dist/
+*.log
+
+# Secrets never go in git. Not even "just for testing".
+.env
+.env.*
+
+# Downloaded by `npm run models` (bpe.vocab IS committed: it can only be generated with Python).
+resources/models/kws/*.onnx
+resources/models/kws/tokens.txt
+resources/models/vad/
+
+# Downloaded by `npm run tools` (Google's platform-tools: adb).
+resources/platform-tools/

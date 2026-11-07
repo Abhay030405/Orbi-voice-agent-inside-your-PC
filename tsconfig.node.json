@@ -1,0 +1,19 @@
+{
+  // The Node world: main + preload. Knows about `fs`, `os`, `process`. Does NOT know `window`.
+  "compilerOptions": {
+    "composite": true,
+    "target": "ES2023",
+    "lib": ["ES2023"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    // Tests run straight on Node (no build step), and Node needs real file extensions in imports.
+    "allowImportingTsExtensions": true,
+    "types": ["node"],
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": true,
+    "outDir": "node_modules/.tmp/tsc-node"
+  },
+  "include": ["electron.vite.config.ts", "relay/**/*.ts", "src/main/**/*", "src/preload/**/*", "src/shared/**/*"]
+}

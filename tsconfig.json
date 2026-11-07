@@ -1,0 +1,5 @@
+{
+  // Two TypeScript "worlds", on purpose. See docs/build-log/01-phase0-skeleton.md → "Why two tsconfigs".
+  "files": [],
+  "references": [{ "path": "./tsconfig.node.json" }, { "path": "./tsconfig.web.json" }]
+}
